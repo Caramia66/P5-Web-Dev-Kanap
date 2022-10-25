@@ -1,3 +1,5 @@
+// "use strict";
+
 const queryString = window.location.search;
 
 const urlParams = new URLSearchParams(queryString);
@@ -53,3 +55,26 @@ function toCart(product) {
   //TODO create function to handle click event. Use "add to cart"function name
   //TODO add to cart function needs to get, color and quantity selected
 }
+const clickAddToCart = document.getElementById("addToCart");
+
+clickAddToCart.addEventListener("click", () => {
+  document.getElementById("quantity");
+  var numberOfItems = input.value;
+
+  console.log(numberOfItems);
+
+  // $event.target.value;
+
+  // header.classList.add("blue-background", "text-white");
+  // header.classList.remove("brown-background", "green-background");
+});
+
+// var newArray [color, quantity];
+
+// local storage
+// getItem(key) - will get the item at the given key value.
+// key(index) - finds the key value at the given index.
+// setItem(key, value) - will allow you to store a key and a value.
+// removeItem(key) - removes the item at the given key value.
+// clear() - removes everything.
+// length - will return you the length of the list of stored items.
