@@ -25,13 +25,8 @@ function toCart(product) {
   const productDescription = document.getElementById("description");
   productDescription.innerText = product.description;
 
-  //TODO Insert price
-
   const productPrice = document.getElementById("price");
   productPrice.innerText = product.price;
-
-  /*TODO Insert color option -
-  Iterate over product colors (for Loop) append to Select tag*/
 
   for (let i = 0; i < product.colors.length; i++) {
     const colorsElement = document.getElementById("colors");
@@ -41,32 +36,31 @@ function toCart(product) {
     colorsElement.appendChild(optionElement);
   }
 
-  // for (let i = 0; i < product.colors.length; i++) {
-  // for (let color of product.colors) {
-  //   const colorsElement = document.getElementById("colors");
-  //   const optionElement = document.createElement("option");
-  //   optionElement.setAttribute("value", color);
-  //   optionElement.innerText = color;
-  //   colorsElement.appendChild(optionElement);
-  // }
-
   //MILESTONE 7
-  //TODO Add event listener to add to cart button
-  //TODO create function to handle click event. Use "add to cart"function name
-  //TODO add to cart function needs to get, color and quantity selected
 }
 const clickAddToCart = document.getElementById("addToCart");
 
 clickAddToCart.addEventListener("click", () => {
-  document.getElementById("quantity");
-  var numberOfItems = input.value;
-
-  console.log(numberOfItems);
-
-  // $event.target.value;
-
-  // header.classList.add("blue-background", "text-white");
-  // header.classList.remove("brown-background", "green-background");
+  var quantity = document.getElementById("quantity").value;
+  var color = document.getElementById("colors").value;
+  console.log(productId);
+  console.log(JSON.parse(localStorage.getItem("cart")));
+  //TODO
+  // Add item to cart
+  // note cart items are unique dut to ID and color
+  const cartItem = {
+    quantity: quantity,
+    //TODO Add ID and color
+  };
+  // Store in local storage
+  const cartArray = []; // TODO move out of function or you'll have empty cart
+  cartArray.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(cartArray));
+  //TODO
+  // Scenario #1 Cart doesn't exist or is empty
+  // Scenario #2 Cart exists but item selected is not in it yet
+  // Scenario #3 Check if product has been added to cart (if statement and condtion)
+  //              Increase quantity of existing cart item
 });
 
 // var newArray [color, quantity];
