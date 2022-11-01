@@ -47,11 +47,15 @@ clickAddToCart.addEventListener("click", () => {
   console.log(JSON.parse(localStorage.getItem("cart")));
   //TODO
   // Add item to cart
-  // note cart items are unique dut to ID and color
+  // note cart items are unique due to ID and color
   const cartItem = {
     quantity: quantity,
+    color: color,
+    sofaId: productId
     //TODO Add ID and color
+   
   };
+
   // Store in local storage
   const cartArray = []; // TODO move out of function or you'll have empty cart
   cartArray.push(cartItem);
@@ -61,6 +65,13 @@ clickAddToCart.addEventListener("click", () => {
   // Scenario #2 Cart exists but item selected is not in it yet
   // Scenario #3 Check if product has been added to cart (if statement and condtion)
   //              Increase quantity of existing cart item
+
+let cartContents = localStorage.getItem('cartArray');
+localStorage.key('cartArray');
+
+if (cartContents >0){
+  cartItem.quantity+cartArray.quantity;
+}
 });
 
 // var newArray [color, quantity];
