@@ -38,13 +38,15 @@ function toCart(product) {
 
   //MILESTONE 7
 }
+
+
 const clickAddToCart = document.getElementById("addToCart");
 
 clickAddToCart.addEventListener("click", () => {
   var quantity = document.getElementById("quantity").value;
   var color = document.getElementById("colors").value;
-  console.log(productId);
-  console.log(JSON.parse(localStorage.getItem("cart")));
+  // console.log(productId);
+  // console.log(JSON.parse(localStorage.getItem("cart")));
 
   const cartItem = {
     quantity: quantity,
