@@ -39,7 +39,6 @@ function toCart(product) {
   //MILESTONE 7
 }
 
-
 const clickAddToCart = document.getElementById("addToCart");
 
 clickAddToCart.addEventListener("click", () => {
@@ -61,6 +60,8 @@ clickAddToCart.addEventListener("click", () => {
     //TODO check to see if product item selected is already in cart with same color
     //if yes, then increase the quantity (scenario 3)
     //if no, push the cart item (scenario 2)
+
+    localStorage.setItem(cartContents, quantity);
   } else {
     // Scenario #1 Cart doesn't exist or is empty/Done
     const cartArray = [];
