@@ -61,7 +61,12 @@ clickAddToCart.addEventListener("click", () => {
     //if yes, then increase the quantity (scenario 3)
     //if no, push the cart item (scenario 2)
 
-    localStorage.setItem(cartContents, quantity);
+    const existingCartItem = cartContents.find(
+      (item) => item.sofaId === cartItem.sofaId && item.color === cartItem.color
+    );
+
+    localStorage.setItem(existingCartItem, quantity.length);
+    localStorage.setItem(existingCartItem, color.length);
   } else {
     // Scenario #1 Cart doesn't exist or is empty/Done
     const cartArray = [];
