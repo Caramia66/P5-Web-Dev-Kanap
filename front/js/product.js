@@ -62,9 +62,9 @@ clickAddToCart.addEventListener("click", () => {
     //if no, push the cart item (scenario 2)
 
     const existingCartItem = cartContents.find(
-      (item) => item.sofaId === cartItem.sofaId && item.color === cartItem.color
+      item => item.sofaId === cartItem.sofaId && item.color === cartItem.color
     );
-
+    localStorage.setItem(existingCartItem, productId);
     localStorage.setItem(existingCartItem, quantity);
     localStorage.setItem(existingCartItem, color);
   } else {
