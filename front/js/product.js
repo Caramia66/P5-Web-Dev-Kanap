@@ -65,8 +65,8 @@ clickAddToCart.addEventListener("click", () => {
       (item) => item.sofaId === cartItem.sofaId && item.color === cartItem.color
     );
 
-    localStorage.setItem(existingCartItem, quantity.length);
-    localStorage.setItem(existingCartItem, color.length);
+    localStorage.setItem(existingCartItem, quantity);
+    localStorage.setItem(existingCartItem, color);
   } else {
     // Scenario #1 Cart doesn't exist or is empty/Done
     const cartArray = [];
