@@ -65,20 +65,18 @@ clickAddToCart.addEventListener("click", () => {
       (item) => item.sofaId === cartItem.sofaId && item.color === cartItem.color
     );
 
-    if (existingCartItem >= 0) {
+    if (existingCartItem) {
       existingCartItem.quantity = cartItem.quantity + existingCartItem.quantity;
       console.log(existingCartItem);
     } else {
-      cartArray = [];
-      cartArray.push(cartItem);
-      console.log(cartArray);
-      localStorage.setItem("cart", JSON.stringify(cartArray));
+      cartContents.push(cartItem);
+      console.log(cartContents);
     }
   } else {
     // Scenario #1 Cart doesn't exist or is empty/Done
-    const cartArray = [];
-    cartArray.push(cartItem);
-    console.log(cartArray);
-    localStorage.setItem("cart", JSON.stringify(cartArray));
+    cartContents = [];
+    cartContents.push(cartItem);
+    console.log(cartContents);
+    localStorage.setItem("cart", JSON.stringify(cartContents));
   }
 });
