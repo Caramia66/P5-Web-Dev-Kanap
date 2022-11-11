@@ -80,3 +80,6 @@ clickAddToCart.addEventListener("click", () => {
     localStorage.setItem("cart", JSON.stringify(cartContents));
   }
 });
+
+
+
