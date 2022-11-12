@@ -77,8 +77,8 @@ clickAddToCart.addEventListener("click", () => {
     cartContents = [];
     cartContents.push(cartItem);
     console.log(cartContents);
-    localStorage.setItem("cart", JSON.stringify(cartContents));
   }
+    localStorage.setItem("cart", JSON.stringify(cartContents));
 });
 
 
