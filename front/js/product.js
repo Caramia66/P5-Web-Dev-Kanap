@@ -1,5 +1,3 @@
-// "use strict";
-
 const queryString = window.location.search;
 
 const urlParams = new URLSearchParams(queryString);
@@ -78,8 +76,5 @@ clickAddToCart.addEventListener("click", () => {
     cartContents.push(cartItem);
     console.log(cartContents);
   }
-    localStorage.setItem("cart", JSON.stringify(cartContents));
+  localStorage.setItem("cart", JSON.stringify(cartContents));
 });
-
-
-
