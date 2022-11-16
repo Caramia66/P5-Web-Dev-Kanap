@@ -17,29 +17,31 @@ function insertCartItemCard(product, cartItem) {
   console.log(cartItem);
   const article = document.createElement("article");
   //TODO add class to article tag
-  // article.classList.add("anotherclass");
+  article.classList.add("cart__item");
   //TODO add dataset keys to article tag
-  //article.dataset.id="...."
+  article.dataset.id = "{product-ID}";
+  article.dataset.color = "{product-color}";
 
   article.innerHTML = `
     <div class="cart__item__img">
-                  <img src="../images/product01.jpg" alt="Photo of a sofa">
+                  
+                  <img src="${product.imageUrl}" alt="Photo of a sofa">
                 </div>
                 <div class="cart__item__content">
                   <div class="cart__item__content__description">
-                    <h2>Name of the product</h2>
-                    <p>Green</p>
+                    <h2>${product.name}</h2>
+                    <p>${cartItem.color}</p>
                     <p>€${product.price}</p>
                   </div>
                   <div class="cart__item__content__settings">
                     <div class="cart__item__content__settings__quantity">
                       <p>Qté : </p>
-                      <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" value="42">
+                      <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" value="${cartItem.quantity}">
                     </div>
                     <div class="cart__item__content__settings__delete">
                       <p class="deleteItem">Delete</p>
                     </div>
                   </div>
                 </div>`;
- section.appendChild(article);
+  section.appendChild(article);
 }
