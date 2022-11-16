@@ -45,36 +45,39 @@ clickAddToCart.addEventListener("click", () => {
   // console.log(productId);
   // console.log(JSON.parse(localStorage.getItem("cart")));
 
-  const cartItem = {
+  const selectedProduct = {
     quantity: parseInt(quantity),
     color: color,
     sofaId: productId,
   };
 
-  // Store in local storage
+  // Get cart from local storage
   let cartContents = JSON.parse(localStorage.getItem("cart"));
 
   if (cartContents !== null && cartContents.length > 0) {
-    //TODO check to see if product item selected is already in cart with same color
-    //if yes, then increase the quantity (scenario 3)
-    //if no, push the cart item (scenario 2)
-
     const existingCartItem = cartContents.find(
-      (item) => item.sofaId === cartItem.sofaId && item.color === cartItem.color
+      (item) =>
+        item.sofaId === selectedProduct.sofaId &&
+        item.color === selectedProduct.color
     );
 
     if (existingCartItem) {
-      existingCartItem.quantity = cartItem.quantity + existingCartItem.quantity;
+      //if yes, then increase the quantity (scenario 3)
+      existingCartItem.quantity =
+        selectedProduct.quantity + existingCartItem.quantity;
       console.log(existingCartItem);
     } else {
-      cartContents.push(cartItem);
+      //if no, push the cart item (scenario 2)
+
+      cartContents.push(selectedProduct);
       console.log(cartContents);
     }
   } else {
     // Scenario #1 Cart doesn't exist or is empty/Done
     cartContents = [];
-    cartContents.push(cartItem);
+    cartContents.push(selectedProduct);
     console.log(cartContents);
   }
+  //Store in Local storage
   localStorage.setItem("cart", JSON.stringify(cartContents));
 });
