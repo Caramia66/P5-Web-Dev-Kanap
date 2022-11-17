@@ -43,5 +43,11 @@ function insertCartItemCard(product, cartItem) {
                     </div>
                   </div>
                 </div>`;
+
+  for (let i = 0; i < cartItem.length; i++) {
+    var totalItems = i + JSON.stringify(product.quantity);
+  }
+  document.getElementById("totalQuantity").innerText = totalItems;
+
   section.appendChild(article);
 }
