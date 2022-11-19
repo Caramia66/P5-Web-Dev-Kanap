@@ -57,13 +57,10 @@ function updateTotalQuantityOnPage(cartItem) {
 }
 
 function updateTotalPriceOnPage(cartItem) {
+  const price = querySelector("#parent :nth-child(3)");
   const element = document.getElementById("totalPrice");
-  const previousPrice = parseInt(element.innerText) || 0;
 
-  element.innerText = previousPrice + cartItem.price;
+  element.innerText = (cartItem.quantity) * (product.price);
+
+    
 }
-
-// for (let i = 0; i < cartItem.length; i++) {
-//   var totalItems = i + JSON.stringify(product.quantity);
-// }
-// document.getElementById("totalQuantity").innerText = totalItems;
