@@ -43,11 +43,27 @@ function insertCartItemCard(product, cartItem) {
                     </div>
                   </div>
                 </div>`;
-
-  for (let i = 0; i < cartItem.length; i++) {
-    var totalItems = i + JSON.stringify(product.quantity);
-  }
-  document.getElementById("totalQuantity").innerText = totalItems;
+  updateTotalQuantityOnPage(cartItem);
+  updateTotalPriceOnPage(cartItem);
 
   section.appendChild(article);
 }
+
+function updateTotalQuantityOnPage(cartItem) {
+  const element = document.getElementById("totalQuantity");
+  const previousTotal = parseInt(element.innerText) || 0;
+
+  element.innerText = previousTotal + cartItem.quantity;
+}
+
+function updateTotalPriceOnPage(cartItem) {
+  const element = document.getElementById("totalPrice");
+  const previousPrice = parseInt(element.innerText) || 0;
+
+  element.innerText = previousPrice + cartItem.price;
+}
+
+// for (let i = 0; i < cartItem.length; i++) {
+//   var totalItems = i + JSON.stringify(product.quantity);
+// }
+// document.getElementById("totalQuantity").innerText = totalItems;
