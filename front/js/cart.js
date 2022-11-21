@@ -44,7 +44,7 @@ function insertCartItemCard(product, cartItem) {
                   </div>
                 </div>`;
   updateTotalQuantityOnPage(cartItem);
-  updateTotalPriceOnPage(cartItem);
+  updateTotalPriceOnPage(product, cartItem);
 
   section.appendChild(article);
 }
@@ -56,11 +56,11 @@ function updateTotalQuantityOnPage(cartItem) {
   element.innerText = previousTotal + cartItem.quantity;
 }
 
-function updateTotalPriceOnPage(cartItem) {
-  const price = querySelector("#parent :nth-child(3)");
-  const element = document.getElementById("totalPrice");
+function updateTotalPriceOnPage(product, cartItem) {
+  // const price = querySelector("#parent :nth-child(3)");
+  const price = fetch(`http://localhost:3000/api/products/${product.price}`)
+  const totalPrice = document.getElementById("totalPrice");
+  const previousPrice = parseInt(totalPrice.innerText) || 0;
 
-  element.innerText = (cartItem.quantity) * (product.price);
-
-    
+  totalPrice.innerText = cartItem.quantity * price;
 }
