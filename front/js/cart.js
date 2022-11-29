@@ -58,9 +58,16 @@ function updateTotalQuantityOnPage(cartItem) {
 
 function updateTotalPriceOnPage(product, cartItem) {
   // const price = querySelector("#parent :nth-child(3)");
-  const price = fetch(`http://localhost:3000/api/products/${product.price}`)
+  // const price = fetch(`http://localhost:3000/api/products/${product.price}`)
   const totalPrice = document.getElementById("totalPrice");
   const previousPrice = parseInt(totalPrice.innerText) || 0;
 
-  totalPrice.innerText = cartItem.quantity * price;
+  totalPrice.innerText = previousPrice + cartItem.quantity * product.price;
+}
+
+const deleteItem = document.getElementsByClassName(deleteItem);
+deleteItem.addEventListener('click', removeProduct)
+
+function removeProduct (){
+  remove(article);
 }
