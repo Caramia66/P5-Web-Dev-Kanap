@@ -43,6 +43,7 @@ function insertCartItemCard(product, cartItem) {
                     </div>
                   </div>
                 </div>`;
+
   updateTotalQuantityOnPage(cartItem);
   updateTotalPriceOnPage(product, cartItem);
   updateColorChoices(cartItem, color);
@@ -67,15 +68,17 @@ function updateTotalPriceOnPage(product, cartItem) {
 }
 
 function updateColorChoices(cartItem, color) {
-  const colors = document.getElementByClass("cart__item__content__description");
-  const colorElement = parseInt(colors.innerText) || 0;
+  const colors = document.getElementsByClassName(
+    cart__item__content__description
+  );
+  const colorElement = colors.innerText || 0;
 
-  element.innerText = previousTotal + cartItem.color;
+  colors.innerText = colors + cartItem.color;
 }
 
 const deleteItem = document.getElementsByClassName(deleteItem);
-deleteItem.addEventListener('click', removeProduct)
+deleteItem.addEventListener("click", removeProduct);
 
-function removeProduct (){
+function removeProduct() {
   remove(article);
 }
