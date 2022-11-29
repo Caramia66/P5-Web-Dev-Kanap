@@ -45,6 +45,7 @@ function insertCartItemCard(product, cartItem) {
                 </div>`;
   updateTotalQuantityOnPage(cartItem);
   updateTotalPriceOnPage(product, cartItem);
+  updateColorChoices(cartItem, color);
 
   section.appendChild(article);
 }
@@ -63,6 +64,13 @@ function updateTotalPriceOnPage(product, cartItem) {
   const previousPrice = parseInt(totalPrice.innerText) || 0;
 
   totalPrice.innerText = previousPrice + cartItem.quantity * product.price;
+}
+
+function updateColorChoices(cartItem, color) {
+  const colors = document.getElementByClass("cart__item__content__description");
+  const colorElement = parseInt(colors.innerText) || 0;
+
+  element.innerText = previousTotal + cartItem.color;
 }
 
 const deleteItem = document.getElementsByClassName(deleteItem);
