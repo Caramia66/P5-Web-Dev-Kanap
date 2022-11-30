@@ -19,8 +19,9 @@ function insertCartItemCard(product, cartItem) {
   //TODO add class to article tag
   article.classList.add("cart__item");
   //TODO add dataset keys to article tag
-  article.dataset.id = "{product-ID}";
-  article.dataset.color = "{product-color}";
+  console.log(product);
+  article.dataset.id = product._id;
+  article.dataset.color = cartItem.color;
 
   article.innerHTML = `
     <div class="cart__item__img">
@@ -46,7 +47,8 @@ function insertCartItemCard(product, cartItem) {
 
   updateTotalQuantityOnPage(cartItem);
   updateTotalPriceOnPage(product, cartItem);
-  updateColorChoices(cartItem, color);
+  const deleteItemElement = article.querySelector(".deleteItem");
+  deleteItemElement.addEventListener("click", removeProduct);
 
   section.appendChild(article);
 }
@@ -67,18 +69,18 @@ function updateTotalPriceOnPage(product, cartItem) {
   totalPrice.innerText = previousPrice + cartItem.quantity * product.price;
 }
 
-function updateColorChoices(cartItem, color) {
-  const colors = document.getElementsByClassName(
-    cart__item__content__description
-  );
-  const colorElement = colors.innerText || 0;
-
-  colors.innerText = colors + cartItem.color;
+function removeProduct(event) {
+  const articleElement = event.target.closest("article");
+  console.log(articleElement.dataset.id);
+  console.log(articleElement.dataset.color);
+  //TODO Remove closest article element from page
+  // TODO Update (remove id) local storage
+  //Step 1 Get cart array from local storage
+  //Step 2 Use FILTER function on array to remove cart item with ID and color we got from lines 74/75
+  //for example, const filteredCart = cart.filter((item) =>
+  //item.sofaId !== articleElement.dataset.id &&
+  //item.color !== articleElement.dataset.color)
+  //Step 3 set filtered cart to local storage
 }
 
-const deleteItem = document.getElementsByClassName(deleteItem);
-deleteItem.addEventListener("click", removeProduct);
-
-function removeProduct() {
-  remove(article);
-}
+//TODO Add event listener for changing quantity using what we did for deleting item as a guide
