@@ -73,7 +73,9 @@ function removeProduct(event) {
   const articleElement = event.target.closest("article");
   console.log(articleElement.dataset.id);
   console.log(articleElement.dataset.color);
-  //TODO Remove closest article element from page
+  //TODO Remove closest article element from page DONE?
+  articleElement.remove();
+
   // TODO Update (remove id) local storage
   //Step 1 Get cart array from local storage
   //Step 2 Use FILTER function on array to remove cart item with ID and color we got from lines 74/75
@@ -81,6 +83,19 @@ function removeProduct(event) {
   //item.sofaId !== articleElement.dataset.id &&
   //item.color !== articleElement.dataset.color)
   //Step 3 set filtered cart to local storage
+
+  // const singleItem = JSON.parse(localStorage.getItem("cart"));
+
+  // const filteredCart = singleItem.filter(
+  //   (item) =>
+  //     item.sofaId !== articleElement.dataset.id &&
+  //     item.color !== articleElement.dataset.color
+  // );
+
+  // localStorage.removeItem("sofaId");
+
+  const singleItem = JSON.parse(localStorage.getItem("cart", "sofaId"));
+  localStorage.removeItem("cart", "sofaId");
 }
 
 //TODO Add event listener for changing quantity using what we did for deleting item as a guide
