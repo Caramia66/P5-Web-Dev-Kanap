@@ -1,3 +1,4 @@
+console.log("test");
 //Get cart from local storage
 const cartContents = JSON.parse(localStorage.getItem("cart"));
 console.log(cartContents);
@@ -24,32 +25,33 @@ function insertCartItemCard(product, cartItem) {
   article.dataset.color = cartItem.color;
 
   article.innerHTML = `
-    <div class="cart__item__img">
-                  
-                  <img src="${product.imageUrl}" alt="Photo of a sofa">
-                </div>
-                <div class="cart__item__content">
-                  <div class="cart__item__content__description">
-                    <h2>${product.name}</h2>
-                    <p>${cartItem.color}</p>
-                    <p>€${product.price}</p>
-                  </div>
-                  <div class="cart__item__content__settings">
-                    <div class="cart__item__content__settings__quantity">
-                      <p>Qté : </p>
-                      <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" value="${cartItem.quantity}">
-                    </div>
-                    <div class="cart__item__content__settings__delete">
-                      <p class="deleteItem">Delete</p>
-                    </div>
-                  </div>
-                </div>`;
+    <div class="cart__item__img">         
+    <img src="${product.imageUrl}" alt="Photo of a sofa">
+    </div>
+      <div class="cart__item__content">
+        <div class="cart__item__content__description">
+          <h2>${product.name}</h2>
+          <p>${cartItem.color}</p>
+          <p>€${product.price}</p>
+      </div>
+        <div class="cart__item__content__settings">
+          <div class="cart__item__content__settings__quantity">
+            <p>Qté : </p>
+            <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" value="${cartItem.quantity}">
+          </div>
+          <div class="cart__item__content__settings__delete">
+            <p class="deleteItem">Delete</p>
+          </div>
+        </div>
+    </div>`;
 
   updateTotalQuantityOnPage(cartItem);
   updateTotalPriceOnPage(product, cartItem);
   const deleteItemElement = article.querySelector(".deleteItem");
   deleteItemElement.addEventListener("click", removeProduct);
 
+  const changeQuantityElement = article.querySelector(".itemQuantity");
+  changeQuantityElement.addEventListener("change", changeProductQuantity);
   section.appendChild(article);
 }
 
@@ -103,11 +105,25 @@ function removeProduct(event) {
   // const singleItem = JSON.parse(localStorage.getItem("cart", "sofaId"));
   // localStorage.removeItem("cart", "sofaId");
   localStorage.setItem("cart", JSON.stringify(filteredCart));
+}
 
-  //TODO Add event listener for changing quantity using what we did for deleting item as a guide
-  let input = document.querySelector(".itemQuantity");
-  let result = document.querySelector("value");
-  input.addEventListener("change", function () {
-    result.textContent = this.value;
-  });
+//TODO Add event listener for changing quantity using what we did for deleting item as a guide
+// let input = document.querySelector(".itemQuantity");
+// let result = document.querySelector("value");
+// input.addEventListener("change", function () {
+//   result.textContent = this.value;
+// });
+
+function changeProductQuantity(event) {
+  const newQuantity = parseInt(event.target.value);
+  const articleElement = event.target.closest("article");
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  console.log(articleElement.dataset.id);
+  const cartItem = cart.find(
+    (item) =>
+      item.sofaId === articleElement.dataset.id &&
+      item.color === articleElement.dataset.color
+  );
+  cartItem.quantity = newQuantity;
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
