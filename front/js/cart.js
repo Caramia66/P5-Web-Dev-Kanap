@@ -85,7 +85,7 @@ function removeProduct(event) {
   //Step 3 set filtered cart to local storage
 
   // const singleItem = JSON.parse(localStorage.getItem("cart"));
-
+  const cart = JSON.parse(localStorage.getItem("cart"));
   // const filteredCart = singleItem.filter(
   //   (item) =>
   //     item.sofaId !== articleElement.dataset.id &&
@@ -94,8 +94,20 @@ function removeProduct(event) {
 
   // localStorage.removeItem("sofaId");
 
-  const singleItem = JSON.parse(localStorage.getItem("cart", "sofaId"));
-  localStorage.removeItem("cart", "sofaId");
-}
+  const filteredCart = cart.filter(
+    (item) =>
+      item.sofaId !== articleElement.dataset.id ||
+      item.color !== articleElement.dataset.color
+  );
 
-//TODO Add event listener for changing quantity using what we did for deleting item as a guide
+  // const singleItem = JSON.parse(localStorage.getItem("cart", "sofaId"));
+  // localStorage.removeItem("cart", "sofaId");
+  localStorage.setItem("cart", JSON.stringify(filteredCart));
+
+  //TODO Add event listener for changing quantity using what we did for deleting item as a guide
+  let input = document.querySelector(".itemQuantity");
+  let result = document.querySelector("value");
+  input.addEventListener("change", function () {
+    result.textContent = this.value;
+  });
+}
